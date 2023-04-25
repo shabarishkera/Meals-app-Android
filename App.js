@@ -5,10 +5,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MealsOverView from './screen/MealsOverView';
 import { MEALS } from './data/data';
+import MealDetailedScreen from './screen/MealDetailedScreen';
+import { Button } from 'react-native';
 
 export default function App() {
   const stack=createNativeStackNavigator();
- 
   return (
     <>
     <StatusBar style='light'/>
@@ -21,7 +22,7 @@ export default function App() {
           title:route.params.title
         }
       }} component={MealsOverView} />
-      
+      <stack.Screen name='ExpandDetail' options={{headerRight:()=>{return<Button title="save"></Button>}}} component={MealDetailedScreen}/>
     </stack.Navigator>
     </NavigationContainer>
     </>

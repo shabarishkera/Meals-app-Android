@@ -1,42 +1,51 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import {StyleSheet, View, Text, Image, Pressable} from 'react-native'
+import { StyleSheet, View, Text, Image, Pressable } from 'react-native'
 export default function Mealitem(props) {
-    console.log(props.imageurl)
+    const navigator = useNavigation();
+    const hanldePress = () => {
+        navigator.navigate("ExpandDetail", {
+            id: props.id,
+
+        })
+
+
+    }
     return <>
         <View style={
             style.container
         }>
-<Pressable style={({pressed})=>pressed?style.pressed:style.notpressed} android_ripple={{color:'white'}}>
-            <View>
-                <Image resizeMode='cover'
-                    style={
-                        style.image
-                    }
-                    source={
-                        {uri: props.imageurl}
-                    }/>
-                <Text style={
-                    style.title
-                }>
-                    {
-                    props.title
-                } </Text>
-            </View>
-            <View style={style.detailtext}>
-                <Text style={style.text}>{
-                    props.duration
-                }</Text>
-                <Text style={style.text}>{
-                    props.complexity
-                }</Text>
-                <Text>{
-                    props.affordability
-                } </Text>
+            <Pressable onPress={hanldePress} style={({ pressed }) => pressed ? style.pressed : style.notpressed} android_ripple={{ color: 'white' }}>
+                <View>
+                    <Image resizeMode='cover'
+                        style={
+                            style.image
+                        }
+                        source={
+                            { uri: props.imageurl }
+                        } />
+                    <Text style={
+                        style.title
+                    }>
+                        {
+                            props.title
+                        } </Text>
+                </View>
+                <View style={style.detailtext}>
+                    <Text style={style.text}>{
+                        props.duration
+                    }</Text>
+                    <Text style={style.text}>{
+                        props.complexity
+                    }</Text>
+                    <Text>{
+                        props.affordability
+                    } </Text>
 
-            </View>
+                </View>
             </Pressable>
         </View>
-  
+
     </>
 }
 const style = StyleSheet.create({
@@ -46,14 +55,14 @@ const style = StyleSheet.create({
         overflow: 'hidden',
         backgroundColor: 'white',
         borderRadius: 8,
-        elevation:16,
+        elevation: 16,
 
     },
-    pressed:{
-        opacity:0.5,
+    pressed: {
+        opacity: 0.5,
     },
-    notpressed:{
-        opacity:1
+    notpressed: {
+        opacity: 1
     },
     image: {
         width: '100%',
@@ -69,11 +78,11 @@ const style = StyleSheet.create({
     },
     detailtext:
     {
-        flexDirection:'row',
-        justifyContent:'center',
-        gap:10,
-textAlign:'center',
-width:'100%'
+        flexDirection: 'row',
+        justifyContent: 'center',
+        gap: 10,
+        textAlign: 'center',
+        width: '100%'
 
     }
 });

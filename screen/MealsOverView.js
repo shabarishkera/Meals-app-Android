@@ -15,7 +15,7 @@ const relatedmeal=MEALS.filter((item)=>{
   const renderitem=(item)=>
   {
 item=item.item;
-return <Mealitem duration={item.duration} complexity={item.complexity} affordability={item.affordability} imageurl={item.imageUrl} title={item.title} />
+return <Mealitem id={item.id} duration={item.duration} complexity={item.complexity} affordability={item.affordability} imageurl={item.imageUrl} title={item.title} />
 
   }
   return  (<>

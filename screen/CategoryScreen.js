@@ -4,7 +4,7 @@ import Categorygrid from "../components/categorygrid";
 import { useNavigation } from "@react-navigation/native";
 function CategoryScreen({navigation}) {
     const renderitem = ({item}) => {
-        console.log(item);
+     
         function pressHandler()
         {
     navigation.navigate("DETAILS",{id:item.id,title:item.title});
