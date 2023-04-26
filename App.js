@@ -22,7 +22,7 @@ export default function App() {
           title:route.params.title
         }
       }} component={MealsOverView} />
-      <stack.Screen name='ExpandDetail' options={{headerRight:()=>{return<Button title="save"></Button>}}} component={MealDetailedScreen}/>
+      <stack.Screen name='ExpandDetail'  component={MealDetailedScreen}/>
     </stack.Navigator>
     </NavigationContainer>
     </>

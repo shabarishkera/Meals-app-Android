@@ -3,8 +3,13 @@ import { Text,View,StyleSheet,Image } from 'react-native'
 import { MEALS } from '../data/data'
 import { FlatList } from 'react-native';
 import { ScrollView } from 'react-native';
-export default function MealDetailedScreen({route}) {
+import {MyIcon} from '../components/MyIcon';
+export default function MealDetailedScreen({route,navigation}) {
     var ob;
+    navigation.setOptions({
+        headerRight :()=>{return <MyIcon onPress={iconhandlePress} color='white' iconName='star' />}
+    });
+
    ob=MEALS.find((item)=>{ return item.id==route.params.id});
    console.log(ob.ingredients)
   return (
