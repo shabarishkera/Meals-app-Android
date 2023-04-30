@@ -1,17 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Text,View,StyleSheet,Image } from 'react-native'
 import { MEALS } from '../data/data'
 import { FlatList } from 'react-native';
 import { ScrollView } from 'react-native';
 import {MyIcon} from '../components/MyIcon';
-export default function MealDetailedScreen({route,navigation}) {
+import { useNavigation } from '@react-navigation/native';
+import { Button,Pressable } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { context } from '../store/cotext/fav';
+export default function MealDetailedScreen({route}) {
     var ob;
-    navigation.setOptions({
-        headerRight :()=>{return <MyIcon onPress={iconhandlePress} color='white' iconName='star' />}
-    });
-
+    const navigation=useNavigation();
+ 
+    const {fav,removefav,addfav}=useContext(context)
    ob=MEALS.find((item)=>{ return item.id==route.params.id});
-   console.log(ob.ingredients)
+   const isFav=fav.includes(ob.id);
+   navigation.setOptions({headerRight:()=>{return <Pressable onPress={hanldefavPress} > 
+    <AntDesign name={isFav?'star':'staro'} size={24} color="white" />
+ </Pressable>}});
+
+   const hanldefavPress=()=>
+   {
+    if(isFav)
+    removefav(ob.id);
+    else
+    addfav(ob.id);
+
+
+   }
   return (
     <ScrollView style={style.container}>
 <View style={style.container}>

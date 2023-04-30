@@ -1,13 +1,17 @@
 import React from 'react'
 import { Pressable,StyleSheet } from 'react-native'
-import Ionicons from "@expo/vector-icons"
-export default function MyIcon({OnPress,iconName,color}) {
+import { AntDesign } from '@expo/vector-icons';
+ function MyIcon({onPress,iconName,color}) {
   return (
  <Pressable onPress={onPress}> 
-    <Ionicons name ={iconName} size={24} color={color} />
+    <AntDesign name="staro" size={24} color="black" />
  </Pressable>
   )
 }
 const style=StyleSheet.create({
+container:{
 
+
+}
 })
+export default MyIcon;
